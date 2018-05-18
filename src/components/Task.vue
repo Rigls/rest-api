@@ -16,18 +16,20 @@
         </tr>
         </tbody>
       </table>
-      <form v-on:submit.prevent="sendAnswer">
+      <div>
         <div class="form-group">
           <label for="answer">Решение задачи: {{response}}</label>
           <input type="text" class="form-control" id="answer" aria-describedby="answerHelp" v-model="answer">
           <small id="answerHelp" class="form-text text-muted">Ответ на задачу</small>
         </div>
-        <button type="submit" class="btn btn-primary">Отправить</button>
-      </form>
+        <button type="submit" class="btn btn-primary" v-on:click.prevent="getAnswer">Получить решение</button>
+        <button type="submit" class="btn btn-primary" v-on:click.prevent="sendAnswer">Отправить</button>
+      </div>
     </div>
 </template>
 
 <script>
+const hashes = require('../hashes')
 export default {
   name: 'Task',
   data () {
@@ -54,13 +56,30 @@ export default {
         }
       }).then(result => {
         this.response = result.data.status
+        if (result.data.status === 'good_job') {
+          this.getTask()
+        }
+      })
+    },
+    getAnswer () {
+      this.answer = hashes.find(item => {
+        for (let property in item) {
+          if (item.hasOwnProperty(property)) {
+            if (item[property] === this.task.digest) {
+              return true
+            }
+          }
+        }
+      }).id
+    },
+    getTask () {
+      this.$http.get('https://proxy.quantumbit.ru/api/tasks/' + this.$route.params.id).then(result => {
+        this.task = result.data.tasks
       })
     }
   },
   mounted () {
-    this.$http.get('https://proxy.quantumbit.ru/api/tasks/' + this.$route.params.id).then(result => {
-      this.task = result.data.tasks
-    })
+    this.getTask()
   }
 }
 </script>
