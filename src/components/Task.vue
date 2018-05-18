@@ -44,7 +44,7 @@ export default {
   },
   methods: {
     sendAnswer () {
-      this.$http.patch('http://proxy.quantumbit.ru/api/tasks/' + this.$route.params.id, {
+      this.$http.patch('https://proxy.quantumbit.ru/api/tasks/' + this.$route.params.id, {
         task: {
           decode: this.answer
         }
@@ -58,7 +58,7 @@ export default {
     }
   },
   mounted () {
-    this.$http.get('http://proxy.quantumbit.ru/api/tasks/' + this.$route.params.id).then(result => {
+    this.$http.get('https://proxy.quantumbit.ru/api/tasks/' + this.$route.params.id).then(result => {
       this.task = result.data.tasks
     })
   }

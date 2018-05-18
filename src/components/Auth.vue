@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     auth () {
-      this.$http.post('http://proxy.quantumbit.ru/api/auth', {
+      this.$http.post('https://proxy.quantumbit.ru/api/auth', {
         login: this.login.toLowerCase(),
         password: this.password
       }).then(result => {

@@ -30,7 +30,7 @@ export default {
           password: this.password
         }
       }
-      this.$http.post('http://proxy.quantumbit.ru/api/users', user).then(result => {
+      this.$http.post('https://proxy.quantumbit.ru/api/users', user).then(result => {
         if (result.data.login) {
           this.$router.push('/auth')
         }

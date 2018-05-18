@@ -32,13 +32,13 @@ export default {
   },
   methods: {
     createTask () {
-      this.$http.post('http://proxy.quantumbit.ru/api/tasks', {}).then(result => {
+      this.$http.post('https://proxy.quantumbit.ru/api/tasks', {}).then(result => {
         this.$router.push('/task/' + result.data.tasks._id.$oid)
       })
     }
   },
   mounted () {
-    this.$http.get('http://proxy.quantumbit.ru/api/tasks').then(result => {
+    this.$http.get('https://proxy.quantumbit.ru/api/tasks').then(result => {
       this.tasks = result.data.tasks
     })
   }
