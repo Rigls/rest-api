@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="mailto:piy@csp.tusur.ru">Вопросы</a>
+              <router-link class="nav-link" to="/users">Пользователи</router-link>
             </li>
             <li class="nav-item" v-if="!authToken">
               <router-link class="nav-link" to="/registration">Регистрация</router-link>

@@ -5,6 +5,7 @@ import Registration from '../components/Registration'
 import Auth from '../components/Auth'
 import Tasks from '../components/Tasks'
 import Task from '../components/Task'
+import Users from '../components/Users'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/task/:id',
       name: 'Task',
       component: Task
+    },
+    {
+      path: '/users',
+      name: 'Users',
+      component: Users
     }
   ]
 })
