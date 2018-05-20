@@ -1,7 +1,7 @@
 <template>
     <div class="row">
-      <button class="btn btn-primary" v-on:click="createTask">Создать задачу</button>
-      <table class="table">
+      <div class="row"><button type="button" style="margin: 10px" class="btn btn-primary btn-lg btn-block" v-on:click="createTask">Создать задачу</button></div>
+      <table class="table table-sm">
         <thead>
         <tr>
           <th scope="col">#</th>
